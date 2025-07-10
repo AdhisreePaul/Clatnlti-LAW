@@ -26,6 +26,7 @@ import CuetPage from './cuet'; // Import the new CUET page component
 import BlogPage from './blog'; // Import the new Blog page component
 import NlsatPage from './nlsat'; // Import the new NLSAT page component
 import SignInPage from './signin'; // Import the new Sign In page component
+import LampDemo from './components/ui/lamp';
 
 function Header() {
   return (
@@ -61,13 +62,7 @@ function Header() {
 }
 
 function HeroSection() {
-    return (
-        <div className="hero-section">
-            <h1>National Law</h1>
-            <h1 className="training-institute">Training Institute</h1>
-            <button className="login-button">Start with Login &rarr;</button>
-        </div>
-    );
+  return <LampDemo />;
 }
 
 function StorySection() {

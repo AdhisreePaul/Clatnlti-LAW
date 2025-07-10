@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src", "components", "lib"]
 }
