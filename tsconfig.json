@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src", "components", "lib"]
+}

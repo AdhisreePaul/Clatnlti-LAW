@@ -1,0 +1,1211 @@
+/* General App layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #0c0c14; /* Dark background for the page */
+}
+
+.main-content {
+  flex-grow: 1;
+  color: white;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #000000;
+  color: white;
+  border-bottom: 1px solid #2a2a3a;
+}
+
+.logo {
+  height: 40px;
+  /* You can add more styles for the logo */
+}
+
+.header-center ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.header-center a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 5px 0;
+  transition: color 0.3s; /* Added for smooth hover effect */
+  position: relative; /* For the underline pseudo-element */
+}
+
+.header-center a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ffc632;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.header-center a:hover {
+  color: #ffc632;
+}
+
+.header-center a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.signin-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s; /* Added for smooth hover effect */
+}
+
+.signin-link:hover {
+  color: #ffc632;
+}
+
+.buy-course-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.buy-course-btn:hover {
+  color: #ffc632;
+}
+
+/* This will remove the outline that can appear on click or focus */
+.buy-course-btn:focus,
+.buy-course-btn:focus-visible {
+  outline: none;
+}
+
+/* Dropdown for "Courses" */
+.dropdown {
+  position: relative;
+}
+
+.dropdown .arrow-down {
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  margin-left: 8px;
+  transition: transform 0.3s;
+}
+
+.dropdown:hover .arrow-down {
+  transform: rotate(225deg);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px; /* Adjusted width */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 0; /* Removed border-radius to match screenshot */
+  padding: 1rem 0; /* Added more padding */
+  border: 1px solid #444; /* Added border */
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #ffc632; /* Gold text color */
+  padding: 12px 24px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: #e4b22e; /* Slightly darker gold on hover */
+}
+
+.hero-section {
+  padding: 8rem 2rem;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 5.5rem;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.hero-section .training-institute {
+    background: -webkit-linear-gradient(left, #66d9ff, #ff8cff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Story Section */
+.story-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative; /* Required for the ::before pseudo-element */
+  z-index: 0;
+}
+
+.story-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Replace with your actual logo */
+  background-image:
+    url('./assets/react.svg'),
+    url('./assets/react.svg'),
+    url('./assets/react.svg'),
+    url('./assets/react.svg');
+  background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: 10% 20%, 90% 15%, 20% 80%, 85% 90%;
+  opacity: 0.05; /* Faded background logos */
+  z-index: -1; /* Place behind content */
+}
+
+.story-label {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.story-title {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.story-title .nlti-underline {
+  text-decoration: underline;
+  text-decoration-color: #ffcc00; /* Gold-like color */
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+.video-placeholder {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  background-color: #2a2a3a; /* Placeholder background */
+}
+
+.video-thumbnail-placeholder {
+    height: 450px; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4a00e0;
+    /* This combines the grid and the gradient */
+    background-image:
+        linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(315deg, #4a00e0 0%, #8e2de2 74%);
+    background-size: 20px 20px, 20px 20px, auto;
+    position: relative;
+}
+
+.play-button {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+}
+
+.play-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 0 15px 25px; /* Creates the triangle */
+  border-color: transparent transparent transparent #333;
+}
+
+
+.login-button {
+  margin-top: 4rem;
+  padding: 0.8rem 2rem;
+  background-color: #1a1a1a; /* Darker background */
+  color: white;
+  border: 1px solid #444; /* More subtle border */
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #2a2a2a;
+  border-color: #666;
+}
+
+/* Secondary Navigation Bar */
+.secondary-nav {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.secondary-nav-inner {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: #22222b;
+  border-radius: 12px;
+}
+
+.secondary-nav button {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent; /* Reserve space for underline */
+  transition: color 0.3s;
+}
+
+.secondary-nav button:hover {
+  color: #ffc632;
+}
+
+.secondary-nav button.active {
+  color: white;
+  border-bottom-color: white;
+  background-color: transparent; /* Ensure no background on active */
+}
+
+/* Features Section */
+.features-section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.features-title {
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+  color: white;
+  line-height: 1.3;
+}
+
+.features-title .clat-underline {
+  /* The squiggle from the screenshot is a custom graphic.
+     A wavy underline is the closest CSS can easily get.
+     For an exact match, an SVG or background image would be needed. */
+  text-decoration: underline;
+  text-decoration-color: #ffc632;
+  text-decoration-style: wavy;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 3px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: left;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.feature-card:hover {
+  border-color: #ffc632;
+  background-color: #ffc632;
+}
+
+.feature-card:hover h3 {
+    /* This empty rule will override the previous hover effect */
+}
+
+/* On hover, all text inside the card becomes black for contrast */
+.feature-card:hover .feature-content h3,
+.feature-card:hover .feature-content p,
+.feature-card:hover .feature-icon {
+  color: #000;
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: #333; /* Dark icon color for contrast on white card */
+  margin-top: 5px;
+}
+
+.feature-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: #1e2a78; /* Dark blue title color */
+  transition: color 0.3s;
+}
+
+.feature-content p {
+  margin: 0;
+  color: #555; /* Medium-dark description color */
+  line-height: 1.6;
+}
+
+/* Results Section */
+.results-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden; /* Important for the slide-in animation */
+}
+
+.results-image-container {
+  width: 50%; /* Adjusted from 45% */
+  position: relative;
+  height: 500px; /* Adjust as needed */
+  border: 4px solid white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.result-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 2s ease-in-out; /* Changed to 2s */
+}
+
+.result-image.active {
+  opacity: 1;
+}
+
+.results-spinner {
+  position: absolute;
+  left: 50%; /* Adjusted to be on the dividing line */
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  animation: spin 10s linear infinite;
+}
+
+.results-spinner img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.results-content {
+  width: 50%; /* Adjusted from 55% */
+  padding-left: 5rem; /* Maintained padding for spinner */
+  color: white;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.results-section.is-visible .results-content {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.results-content h2 {
+  font-size: 2.8rem;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+}
+
+.results-underline {
+  text-decoration: underline;
+  text-decoration-color: #ffc632;
+  text-decoration-style: wavy;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 3px;
+}
+
+.results-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #c0c0c0;
+  margin-bottom: 1rem;
+}
+
+/* Stats Section Refined */
+.stats-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 4rem 2rem;
+  background-color: #0c0c14;
+}
+
+.stat-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem -1rem; /* Negative margin for overlap */
+}
+
+.stat-number {
+  font-size: 9rem;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+}
+
+.stat-number-grey {
+  color: #3a3a3a;
+}
+
+.stat-number-gold {
+  color: #a38b4b;
+}
+
+.stat-label {
+  position: absolute;
+  font-size: 1.1rem;
+  color: #dbdbdb;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px black; /* Improves readability */
+}
+
+/* Ticker Section Refined */
+.ticker-section {
+  background-color: #3c3f58; /* Muted dark blue */
+  overflow: hidden;
+  padding: 1.2rem 0;
+  white-space: nowrap;
+}
+
+.ticker-wrap {
+  display: inline-block;
+  animation: ticker-animation 30s linear infinite;
+}
+
+.ticker-item {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.8rem;
+  font-family: "Times New Roman", Times, serif;
+  text-transform: uppercase;
+  padding: 0 2rem;
+}
+
+.ticker-item::after {
+  content: '❄';
+  margin-left: 4rem;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ticker-item:last-child::after {
+  content: ''; /* No separator after the very last item */
+}
+
+@keyframes ticker-animation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Animate to half to create a seamless loop with duplicated content */
+  }
+}
+
+/* Crash Course Section */
+.crash-course-section {
+    padding: 4rem 2rem;
+    background-color: #0c0c14;
+    color: white;
+    border-top: 1px solid #2a2a3a;
+}
+
+.crash-course-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.course-content-wrapper {
+    display: flex;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.course-details-left,
+.course-details-right {
+    flex: 1;
+}
+
+.pricing-box {
+    background-color: #1a1a1a;
+    border: 2px solid #ffc632;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.limited-banner {
+    background-color: #ffc632;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.price-current {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.price-original {
+    font-size: 1.5rem;
+    text-decoration: line-through;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.price-info {
+    color: #aaa;
+}
+
+.features-heading {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #ffc632;
+    padding-left: 1rem;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+.features-list li {
+    margin-bottom: 0.8rem;
+    color: #ddd;
+}
+
+.registration-form {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.registration-form h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.registration-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #0c0c14;
+    color: white;
+    font-size: 1rem;
+}
+
+.registration-form button {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffc632;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registration-form button:hover {
+    background-color: #e4b22e;
+}
+
+.schedule-details {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.schedule-details h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.schedule-details p {
+    font-size: 1.1rem;
+    color: #ddd;
+    margin-bottom: 0.5rem;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    padding: 4rem 2rem;
+    background-color: #0c0c14;
+    color: white;
+    overflow: hidden;
+}
+
+.testimonials-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+}
+
+.testimonials-underline {
+    text-decoration: underline;
+    text-decoration-color: #ffc632;
+    text-decoration-style: wavy;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 3px;
+}
+
+.testimonial-carousel {
+    position: relative;
+    height: 420px; /* Increased height to push nav down */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    position: absolute;
+    width: 55%;
+    height: 100%;
+    padding: 2rem;
+    border-radius: 20px;
+    transition: transform 2s ease, left 2s ease, box-shadow 0.3s ease; /* Changed to 2s */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-card.active {
+    background-color: #ffc632;
+    color: #000;
+    transform: translateX(-50%) scale(1);
+    left: 50%;
+    opacity: 1;
+    z-index: 2;
+}
+
+.testimonial-card.prev {
+    background-color: white;
+    color: #333;
+    transform: translateX(-85%) scale(0.85); /* Increased gap */
+    left: 0;
+    opacity: 1; /* Make solid */
+    z-index: 1;
+}
+
+.testimonial-card.next {
+    background-color: white;
+    color: #333;
+    transform: translateX(-15%) scale(0.85); /* Increased gap */
+    left: 100%;
+    opacity: 1; /* Make solid */
+    z-index: 1;
+}
+
+.testimonial-card.active:hover {
+    box-shadow: 0 0 40px rgba(255, 198, 50, 0.6); /* Gold shadow */
+}
+
+.testimonial-card.prev:hover,
+.testimonial-card.next:hover {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.4); /* White shadow */
+}
+
+
+.testimonial-card.hidden {
+    transform: scale(0.5);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-info span {
+    font-size: 0.9rem;
+}
+
+.testimonial-nav {
+    text-align: center;
+    margin-top: 4rem; /* Increased margin to ensure visibility */
+}
+
+.testimonial-nav button {
+    background: none;
+    border: 1px solid #444;
+    color: white;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.testimonial-nav button:hover {
+    background-color: #222;
+    border-color: #ffc632;
+}
+
+/* Partners Section */
+.partners-section {
+    padding: 4rem 2rem;
+    background-color: #0c0c14;
+    text-align: center;
+}
+
+.partners-title {
+    font-size: 2.8rem;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.partners-logo-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border: 0.5px solid #ffc632; /* Updated border */
+    border-radius: 20px;
+    background-color: white;
+}
+
+.partners-logo-container img {
+    width: 100%;
+    height: auto;
+}
+
+/* News Section */
+.news-section {
+    padding: 4rem 2rem;
+    background-color: #0c0c14;
+}
+
+.news-title {
+    text-align: center;
+    font-size: 2.8rem;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.news-underline {
+    text-decoration: underline;
+    text-decoration-color: #ffc632;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-card {
+    background-color: #0c0c14;
+    border: 1px solid #333;
+    border-radius: 12px;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.news-card-image-wrapper {
+    flex: 0 0 180px;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.news-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card-date {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.news-card-content h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.news-card-content p {
+    color: #aaa;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+    flex-grow: 1;
+}
+
+.read-more {
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Hover effects */
+.news-card:hover {
+    transform: scale(1.03);
+    border-color: rgba(255, 198, 50, 0.5);
+    box-shadow: 0 10px 30px rgba(255, 198, 50, 0.2);
+}
+
+.news-card:hover h3,
+.news-card:hover .read-more {
+    color: #ffc632;
+}
+
+/* Student Banner Section */
+.student-banner-section {
+    position: relative;
+    height: 60vh;
+    min-height: 500px;
+    background-color: #ffc632;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.student-banner-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 95%;
+    width: auto;
+    z-index: 10;
+}
+
+.banner-foreground-text-ticker,
+.banner-background-text-ticker {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.banner-foreground-text-ticker {
+    top: 70%;
+    z-index: 20;
+}
+
+.banner-background-text-ticker {
+    top: 20%;
+    z-index: 5;
+}
+
+.banner-ticker-content {
+    display: inline-block;
+    animation: marquee-animation 50s linear infinite;
+}
+
+.banner-foreground-text-ticker .banner-ticker-content {
+    font-size: 5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.banner-background-text-ticker .banner-ticker-content {
+    font-size: 8rem;
+    font-weight: bold;
+    color: #ffc632;
+    -webkit-text-stroke: 1px black;
+    text-stroke: 1px black;
+    opacity: 0.8;
+}
+
+@keyframes marquee-animation {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* Courses Section */
+.courses-section {
+    padding: 4rem 2rem;
+    background-color: #0c0c14;
+    color: white;
+}
+
+.courses-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    overflow-x: hidden; /* To contain the title animation */
+}
+
+.section-title {
+    font-size: 2.8rem;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.section-title.is-visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.courses-underline {
+    text-decoration: underline;
+    text-decoration-color: #ffc632;
+    text-decoration-style: wavy;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 3px;
+}
+
+.carousel-nav button {
+    background: none;
+    border: 1px solid #444;
+    color: white;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.carousel-nav button:hover {
+    background-color: #222;
+    border-color: #ffc632;
+}
+
+.courses-container {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1.5rem; /* For shadow visibility */
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+}
+
+.courses-container::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.course-card {
+    flex: 0 0 31%;
+    min-width: 350px;
+    background-color: #0c0c14;
+    border: 2px dotted #444;
+    border-radius: 12px;
+    padding: 0; /* Important: No padding on the outer card */
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, border-style 0.3s;
+}
+
+.course-card-inner {
+    border-radius: 10px; /* Match parent minus border width */
+    overflow: hidden;
+    height: 100%;
+}
+
+.course-card.featured {
+    border: 2px solid #ffc632;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    border-color: #ffc632;
+    border-style: solid;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.course-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.course-content {
+    padding: 1.5rem;
+}
+
+.course-content h3 {
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.course-content p {
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    height: 70px; /* Fixed height for alignment */
+    overflow: hidden;
+}
+
+.buy-now-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.buy-now-btn span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px; /* Slightly larger */
+    height: 35px;
+    border: none;
+    background-color: #2a2a2a; /* Darker background */
+    border-radius: 50%;
+    font-size: 1.2rem; /* Make arrow larger */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.buy-now-btn:hover span {
+    background-color: #ffc632;
+    border-color: #ffc632;
+    color: #000;
+}
+
+/* Remove old BottomNav styles */
+.bottom-nav {
+ display: none;
+}
+
