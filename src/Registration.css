@@ -1,16 +1,19 @@
 /* Note: You should rename this file to Registration.css */
 .reg-page-container {
-    background-color: #0c0c14;
+    background-color: #020617;
     min-height: 100vh;
-    padding: 4rem;
-    padding-top: 1rem;
+    padding: 2rem 4rem; /* Adjusted padding */
+    display: flex; /* Centering content */
+    align-items: center; /* Centering content */
     position: relative;
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Consistent font */
 }
 
 .reg-form-wrapper {
     display: flex;
+    gap: 4rem; /* Increased gap */
+    align-items: center; /* Vertically align form and image */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -23,22 +26,22 @@
 }
 
 .hello-text {
-    font-size: 4rem;
+    font-size: 3rem; /* Slightly smaller */
     font-weight: bold;
     color: white;
-    font-family: 'Arial'; /* Use a custom font or SVG for the exact look */
-    margin-bottom: -2rem;
+    margin-bottom: 0.5rem; /* Adjusted spacing */
 }
 
 .reg-form-left h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem; /* Slightly smaller */
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem; /* Increased spacing */
+    color: #94a3b8; /* Lighter grey for subtitle */
 }
 
 .reg-form {
@@ -47,83 +50,99 @@
 
 .reg-input-group {
     margin-bottom: 1.5rem;
+    position: relative;
 }
 
 .reg-input-group label {
     display: block;
     font-size: 0.9rem;
-    margin-bottom: 0.2rem;
-    color: #ffc632; /* Set label color as requested */
+    margin-bottom: 0.5rem; /* Increased spacing */
+    color: #22D3EE; /* Lighter label color */
 }
 
-.reg-input-group input {
+.reg-input-wrapper {
+    position: relative;
+}
+
+.reg-input-group input[type="text"],
+.reg-input-group input[type="email"],
+.reg-input-group input[type="tel"] {
     width: 100%;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 6px;
+    padding: 0.9rem 1rem 0.9rem 2.5rem; /* Added padding for icon */
+    border: 1px solid #334155; /* Subtle border */
+    border-radius: 8px; /* Slightly more rounded */
     font-size: 1rem;
+    background-color: #0f172a; /* Darker input background */
+    color: white;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.reg-input-group input:focus {
+    outline: none;
+    border-color: #22D3EE;
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
+}
+
+.reg-input-icon {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8; /* Icon color */
 }
 
 .reg-checkbox-group {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
-    color: #ffc632; /* Set label color as requested */
+    margin-bottom: 2rem; /* Increased spacing */
+    color: #cbd5e1;
 }
 
 .reg-checkbox-group input {
-    margin-right: 0.5rem;
+    margin-right: 0.8rem;
+    width: 18px; /* Custom checkbox size */
+    height: 18px;
+    accent-color: #22D3EE; /* Modern way to color checkboxes */
 }
 
 .reg-submit-btn {
-    background-color: #ffc632;
+    background-color: #22D3EE;
     color: #000;
-    border: 2px;
-    border-color: black;
-    transition: box-shadow 0.3s ease;
-    padding: 0.8rem 2.5rem;
-    border-radius: 6px;
+    border: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 0.9rem 2.5rem;
+    border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 1rem;
+    width: 100%; /* Full width button */
 }
 
 .reg-submit-btn:hover {
-    background-color: #ffc632;
-    box-shadow: #ffc632; 
-    border-color: black;
+    background-color: #15B6D1;
+    box-shadow: 0 4px 20px rgba(34, 211, 238, 0.3);
 }
 
 .reg-form-right {
-    flex: 1;
+    flex: 1.2; /* Give slightly more space to image */
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.illustration-placeholder {
-    display: none; /* Hide the old placeholder */
-}
-
 .illustration-image {
-    width: 125%;
-    border-width: 5px;
-    border-color: #ffc632;
+    width: 100%; /* Adjusted width */
+    border-width: 2px;
+    border-color: #22D3EE;
     height: auto;
-    max-height: 80vh;
-    object-fit: contain;
-    border-radius: 5px;
+    max-height: 75vh; /* Adjusted height */
+    object-fit: cover; /* Changed to cover for better fitting */
+    border-radius: 12px; /* More rounded corners */
 }
 
 .teal-square {
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    width: 200px;
-    height: 200px;
-    background-color: #ffc632;
-    z-index: 1;
+    display: none;
 }
 
 /* Pop-up Styles */
@@ -132,7 +151,7 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #ffc632; /* Using the teal from your earlier screenshot */
+    background-color: #22D3EE; /* Using the teal from your earlier screenshot */
     color: #000;
     padding: 1rem 2rem;
     border-radius: 8px;

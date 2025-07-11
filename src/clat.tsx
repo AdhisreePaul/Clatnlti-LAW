@@ -1,6 +1,6 @@
 import React from 'react';
 import './clat.css';
-import nltiLogo from './assets/logo.jpg';
+import nltiLogo from './assets/logo.png';
 
 function ClatPage() {
     return (

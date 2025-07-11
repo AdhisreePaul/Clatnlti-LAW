@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './signin.css';
-import logo from './assets/logo.jpg'; // Assuming logo.jpg is your circular logo
+import logo from './assets/logo.png'; // Assuming logo.jpg is your circular logo
 
 function SignInPage() {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -9,7 +10,9 @@ function SignInPage() {
         <div className="signin-page-container">
             <div className="signin-form-wrapper">
                 <header className="signin-header">
-                    <img src={logo} alt="National Law Training Institute Logo" className="signin-logo" />
+                    <Link to="/">
+                        <img src={logo} alt="National Law Training Institute Logo" className="signin-logo" />
+                    </Link>
                     <h1>National Law Training Institute</h1>
                 </header>
 
@@ -45,7 +48,7 @@ function SignInPage() {
                 </main>
 
                 <footer className="signin-footer">
-                    <p>Don't have an account? <a href="#">Signup now</a></p>
+                    <p>Don't have an account? <Link to="/customer-details">Signup now</Link></p>
                     <p className="copyright">© 2023 National Law Training Institute.<br/>Powered by <a href="#">Capthrone Technologies</a></p>
                 </footer>
             </div>

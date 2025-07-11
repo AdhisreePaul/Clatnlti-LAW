@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Link } from 'react-router-dom';
 import './App.css';
+import { MapPin, Phone, Mail, Youtube, Send, Linkedin, Instagram, Video, Users, BookOpen, Clock, Award, CheckCircle } from 'lucide-react';
 // The LampDemo import has been removed.
 // You should place your logo in the `src/assets` folder
 // and import it here. For now, I'm using a placeholder.
-import logo from './assets/react.svg';
+import logo from './assets/logo.png';
+import footerLogo from './assets/logo.jpg';
 
 import image1 from './assets/image1.jpg';
 import image2 from './assets/image2.jpg';
@@ -19,43 +21,45 @@ import newsImage2 from './assets/ss-2.png';
 import newsImage3 from './assets/ss-3.png';
 import newsImage4 from './assets/ss-4.png';
 import studentsImage from './assets/students.png';
+import storyVideo from './assets/video.mp4'; // Import the local video
 import Regis from './Registration'; // Import the new registration form
 import ClatPage from './clat'; // Import the new CLAT page component
 import ContactPage from './contact'; // Import the new Contact page component
 import CuetPage from './cuet'; // Import the new CUET page component
 import BlogPage from './blog'; // Import the new Blog page component
 import NlsatPage from './nlsat'; // Import the new NLSAT page component
-import SignInPage from './signin'; // Import the new Sign In page component
+import SignInPage from './signin'; 
 import LampDemo from './components/ui/lamp';
 
 function Header() {
   return (
     <header className="header">
       <div className="header-left">
-        {/* Replace with your actual logo */}
-        <img src={logo} alt="Logo" className="logo" />
+        <Link to="/">
+          <img src={logo} alt="National Law Training Institute Logo" className="logo" />
+        </Link>
       </div>
       <nav className="header-center">
         <ul>
-          <li><a href="/">Home</a></li>
+          <li><Link to="/">Home</Link></li>
           <li className="dropdown">
-            <a href="/courses">Courses <span className="arrow-down"></span></a>
+            <Link to="/courses">Courses <span className="arrow-down"></span></Link>
             <div className="dropdown-content">
-              <a href="/courses/law-pg">LAW PG</a>
-              <a href="/courses/law-ug">LAW UG</a>
+              <Link to="/courses/law-pg">LAW PG</Link>
+              <Link to="/courses/law-ug">LAW UG</Link>
             </div>
           </li>
-          <li><a href="/clat">CLAT</a></li>
-          <li><a href="/nlsat">NLSAT</a></li>
-          <li><a href="/cuet">CUET-PG LLB</a></li>
-          <li><a href="/neeti-ai">NEETI-AI</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact Us</a></li>
+          <li><Link to="/clat">CLAT</Link></li>
+          <li><Link to="/nlsat">NLSAT</Link></li>
+          <li><Link to="/cuet">CUET-PG LLB</Link></li>
+          <li><Link to="/neeti-ai">NEETI-AI</Link></li>
+          <li><Link to="/blog">Blog</Link></li>
+          <li><Link to="/contact">Contact Us</Link></li>
         </ul>
       </nav>
       <div className="header-right">
-        <a href="/signin" className="signin-link">Sign In</a>
-        <a href="/customer-details" className="buy-course-btn">Buy Course</a>
+        <Link to="/signin" className="signin-link">Sign In</Link>
+        <Link to="/customer-details" className="buy-course-btn">Buy Course</Link>
       </div>
     </header>
   );
@@ -66,6 +70,16 @@ function HeroSection() {
 }
 
 function StorySection() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <div className="story-section">
             <p className="story-label">STUDY WITH US</p>
@@ -75,13 +89,31 @@ function StorySection() {
             <div className="video-placeholder">
                 {/* This is a placeholder for your video thumbnail. */}
                 <div className="video-thumbnail-placeholder">
-                    {/* 
-                      You can add your illustration image here, like:
-                      <img src="/path/to/illustration.png" alt="Story illustration" className="video-illustration" />
-                    */}
-                    <div className="play-button"></div>
+                    <video
+                        className="video-player"
+                        src={storyVideo}
+                        controls
+                        autoPlay
+                        onEnded={closeModal} // Optional: close modal when video ends
+                    />
                 </div>
-            </div>
+            </div>
+            {isModalOpen && (
+                <div className="video-modal-overlay" onClick={closeModal}>
+                    <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="video-modal-close" onClick={closeModal}>&times;</button>
+                        <div className="video-responsive-container">
+                            <video
+                                className="video-player"
+                                src={storyVideo}
+                                controls
+                                autoPlay
+                                onEnded={closeModal} // Optional: close modal when video ends
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
@@ -342,6 +374,7 @@ function CoursesSection() {
 
 function CrashCourseSection() {
     const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+    const [isEnquirySubmitted, setIsEnquirySubmitted] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -349,14 +382,19 @@ function CrashCourseSection() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Here you would handle the form submission, e.g., send data to a server
         console.log('Form submitted:', formData);
-        alert('Thank you for your enquiry!');
-        setFormData({ name: '', email: '', phone: '' }); // Reset form
+        setIsEnquirySubmitted(true);
+        setFormData({ name: '', email: '', phone: '' });
     };
     
     return (
         <div className="crash-course-section">
+            {isEnquirySubmitted && (
+                <div className="popup-message">
+                    <span>Thank you for your enquiry!</span>
+                    <button onClick={() => setIsEnquirySubmitted(false)} className="popup-close-btn">×</button>
+                </div>
+            )}
             <h1 className="crash-course-title">CLAT Crash Course 2026</h1>
             <div className="course-content-wrapper">
                 <div className="course-details-left">
@@ -364,16 +402,16 @@ function CrashCourseSection() {
                         <span className="limited-banner">LIMITED TIME OFFER!</span>
                         <div className="price-current">₹9,999</div>
                         <div className="price-original">₹19,999</div>
-                        <p className="price-info">One-time payment</p>
+                        <p className="price-info">One-time payment for lifetime access</p>
                     </div>
                     <h2 className="features-heading">What's Included</h2>
                     <ul className="features-list">
-                        <li>✓ 2 Live Classes Per Subject</li>
-                        <li>✓ 24/7 Personalised Mentorship</li>
-                        <li>✓ 50 CLAT Mocks & 100 Sectionals</li>
-                        <li>✓ Comprehensive Study Material</li>
-                        <li>✓ Weekly Doubt Clearing Sessions</li>
-                        <li>✓ Access to Recorded Lectures</li>
+                        <li><Video size={20} className="feature-icon" /> 2 Live Classes Per Subject</li>
+                        <li><Users size={20} className="feature-icon" /> 24/7 Personalised Mentorship</li>
+                        <li><BookOpen size={20} className="feature-icon" /> 50 CLAT Mocks & 100 Sectionals</li>
+                        <li><Award size={20} className="feature-icon" /> Comprehensive Study Material</li>
+                        <li><Clock size={20} className="feature-icon" /> Weekly Doubt Clearing Sessions</li>
+                        <li><CheckCircle size={20} className="feature-icon" /> Access to Recorded Lectures</li>
                     </ul>
                 </div>
                 <div className="course-details-right">
@@ -569,6 +607,59 @@ function StudentBannerSection() {
     );
 }
 
+function Footer() {
+    return (
+        <footer className="footer">
+            <div className="footer-banner">
+                {/* 
+                  This is a placeholder for the banner image from the screenshot.
+                  You can replace this with an `<img>` tag or a background image.
+                */}
+            </div>
+            <div className="footer-content">
+                <div className="footer-section about">
+                    <Link to="/">
+                        <img src={logo} alt="National Law Training Institute Logo" className="footer-logo" />
+                    </Link>
+                    <div className="contact-info">
+                        <p><MapPin size={16} /> 3256, Sector 44D, Chandigarh 160047</p>
+                        <p><Phone size={16} /> (+91) 9876142144</p>
+                        <p><Mail size={16} /> clat.nlti@gmail.com</p>
+                    </div>
+                </div>
+                <div className="footer-section links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><Link to="/about-us">About Us</Link></li>
+                        <li><Link to="/contact">Contact Us</Link></li>
+                        <li><Link to="/law-school-predictor">Law School Predictor</Link></li>
+                    </ul>
+                </div>
+                <div className="footer-section links">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><Link to="/refund-policy">Refund Policy</Link></li>
+                        <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                        <li><Link to="/terms-and-conditions">Terms And Conditions</Link></li>
+                    </ul>
+                </div>
+                <div className="footer-section follow">
+                    <h4>Follow Us</h4>
+                    <div className="social-icons">
+                        <a href="#" aria-label="Youtube"><Youtube size={20} /></a>
+                        <a href="#" aria-label="Telegram"><Send size={20} /></a>
+                        <a href="#" aria-label="LinkedIn"><Linkedin size={20} /></a>
+                        <a href="#" aria-label="Instagram"><Instagram size={20} /></a>
+                    </div>
+                </div>
+            </div>
+            <div className="footer-bottom">
+                <p>© 2023 by National Law Training Institute.</p>
+            </div>
+        </footer>
+    );
+}
+
 function SecondaryNav() {
     return (
         <div className="secondary-nav">
@@ -619,6 +710,7 @@ function App() {
         <Route path="/nlsat" element={<NlsatPage />} />
         <Route path="/signin" element={<SignInPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
