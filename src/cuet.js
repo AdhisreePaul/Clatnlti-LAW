@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import './cuet.css';
+import cuetCourseImage from './assets/cuet.png';
+function CuetPage() {
+    return (_jsxs("div", { className: "cuet-page-container", children: [_jsxs("div", { className: "cuet-content-left", children: [_jsxs("h1", { children: [_jsx("span", { className: "highlight-text", children: "ACE CUET PG LLB" }), " WITH MENTORSHIP FROM TOPPERS"] }), _jsx("p", { children: "Crack CUET PG LLB 2025! Get mentored by DU-LLB toppers, access live sessions, mock tests, and comprehensive study material to secure your dream college." }), _jsx("div", { className: "cuet-buttons-main", children: _jsx("button", { className: "enroll-now-btn", children: "Enroll Now" }) }), _jsxs("div", { className: "cuet-buttons-secondary", children: [_jsx("button", { className: "secondary-btn", children: "NLTI GK Gazette" }), _jsx("button", { className: "secondary-btn", children: "Sample Mock by NLTI!" }), _jsx("button", { className: "secondary-btn", children: "FAQs" })] }), _jsx("div", { className: "cuet-telegram", children: _jsxs("button", { className: "telegram-btn", children: [_jsx("span", { children: "\u27A2" }), " Join Our Telegram Channel"] }) })] }), _jsx("div", { className: "cuet-content-right", children: _jsx("img", { src: cuetCourseImage, alt: "CUET LLB 2025 Course Details", className: "course-details-image" }) })] }));
+}
+export default CuetPage;

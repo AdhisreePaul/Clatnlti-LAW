@@ -1,0 +1,10 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './signin.css';
+import logo from './assets/logo.png'; // Assuming logo.jpg is your circular logo
+function SignInPage() {
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    return (_jsx("div", { className: "signin-page-container", children: _jsxs("div", { className: "signin-form-wrapper", children: [_jsxs("header", { className: "signin-header", children: [_jsx(Link, { to: "/", children: _jsx("img", { src: logo, alt: "National Law Training Institute Logo", className: "signin-logo" }) }), _jsx("h1", { children: "National Law Training Institute" })] }), _jsxs("main", { className: "signin-main", children: [_jsx("h2", { children: "Welcome Back!" }), _jsx("p", { children: "Sign in to continue to National Law Training Institute." }), _jsxs("form", { className: "signin-form", children: [_jsxs("div", { className: "form-group", children: [_jsx("label", { htmlFor: "email", children: "Email" }), _jsx("input", { type: "email", id: "email", placeholder: "Enter Email" })] }), _jsxs("div", { className: "form-group", children: [_jsx("label", { htmlFor: "password", children: "Password" }), _jsx("a", { href: "#", className: "forgot-password", children: "Forgot password?" }), _jsxs("div", { className: "password-wrapper", children: [_jsx("input", { type: passwordVisible ? "text" : "password", id: "password", placeholder: "Enter password" }), _jsx("button", { type: "button", className: "toggle-password", onClick: () => setPasswordVisible(!passwordVisible), children: "\uD83D\uDC41" })] })] }), _jsx("button", { type: "submit", className: "login-btn", children: "Log In" })] })] }), _jsxs("footer", { className: "signin-footer", children: [_jsxs("p", { children: ["Don't have an account? ", _jsx(Link, { to: "/customer-details", children: "Signup now" })] }), _jsxs("p", { className: "copyright", children: ["\u00A9 2023 National Law Training Institute.", _jsx("br", {}), "Powered by ", _jsx("a", { href: "#", children: "Capthrone Technologies" })] })] })] }) }));
+}
+export default SignInPage;
